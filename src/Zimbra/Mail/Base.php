@@ -2286,6 +2286,20 @@ abstract class Base extends AccountBase implements MailInterface
     }
 
     /**
+     * Modify Profile Image.
+     *
+     * @param  string $value base64 content of profile image.
+     * @return mix
+     */
+    public function modifyProfileImage($value)
+    {
+        $request = new \Zimbra\Mail\Request\ModifyProfileImage(
+            $value
+        );
+        return $this->getClient()->doRequest($request);
+    }
+
+    /**
      * Perform an action on a message.
      * For op="update", caller can specify any or all of: l="{folder}", name="{name}", color="{color}", tn="{tag-names}", f="{flags}". 
      * For op="!spam", can optionally specify a destination folder
